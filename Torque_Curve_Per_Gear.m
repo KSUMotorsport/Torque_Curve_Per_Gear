@@ -133,11 +133,82 @@ G5_torque = g5_torque;
 G6_torque = g6_torque;
 
 for i = 1:length(G1_speed)
-    if G1_speed(i,1) >= 43.4
-        
+    if G1_speed(i,1) > 43.4
+        G1_speed(i,1) = 0;
+        G1_torque(i,1) = 0;
+    end
+end
+for i = 1:length(G2_speed)
+    if G2_speed(i,1) < 43.4
+        G2_speed(i,1) = 0;
+        G2_torque(i,1) = 0;
+    end
+end
+for i = 1:length(G2_speed)
+    if G2_speed(i,1) > 51.8
+        G2_speed(i,1) = 0;
+        G2_torque(i,1) = 0;
+    end
+end
+for i = 1:length(G3_speed)
+    if G3_speed(i,1) < 51.8
+        G3_speed(i,1) = 0;
+        G3_torque(i,1) = 0;
+    end
+end
+for i = 1:length(G3_speed)
+    if G3_speed(i,1) > 60
+        G3_speed(i,1) = 0;
+        G3_torque(i,1) = 0;
+    end
+end
+for i = 1:length(G4_speed)
+    if G4_speed(i,1) < 60
+        G4_speed(i,1) = 0;
+        G4_torque(i,1) = 0;
+    end
+end
+for i = 1:length(G4_speed)
+    if G4_speed(i,1) > 68.26
+        G4_speed(i,1) = 0;
+        G4_torque(i,1) = 0;
+    end
+end
+for i = 1:length(G5_speed)
+    if G5_speed(i,1) < 68.26
+        G5_speed(i,1) = 0;
+        G5_torque(i,1) = 0;
+    end
+end
+for i = 1:length(G5_speed)
+    if G5_speed(i,1) > 76.4
+        G5_speed(i,1) = 0;
+        G5_torque(i,1) = 0;
+    end
+end
+for i = 1:length(G6_speed)
+    if G6_speed(i,1) < 76.4
+        G6_speed(i,1) = 0;
+        G6_torque(i,1) = 0;
     end
 end
 
+figure(6969);
+
+yline(446.550)
+hold on
+scatter(G1_speed,G1_torque)
+scatter(G2_speed,G2_torque)
+scatter(G3_speed,G3_torque)
+scatter(G4_speed,G4_torque)
+scatter(G5_speed,G5_torque)
+scatter(G6_speed,G6_torque)
+grid on
+xlabel('Speed (mph)')
+ylabel('Torque (ft-lb)')
+title('Wheel Torque vs. Speed')
+xlim ([15 120])
+ylim ([50 525])
 %%
 %{
 clc
